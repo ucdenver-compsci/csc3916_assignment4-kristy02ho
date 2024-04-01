@@ -252,27 +252,8 @@ router
       console.error("Error creating review:", error);
       res.status(500).json({ error: "Failed to create review" });
     }
-  })
-
-  .delete((req, res) => {
-    const movieTitle = req.params.title;
-
-    Movie.findOneAndDelete({ title: movieTitle }, (err, deletedMovie) => {
-      if (err) {
-        console.error("Error deleting movie:", err);
-        return res.status(500).json({ error: "Failed to delete movie" });
-      }
-
-      if (!deletedMovie) {
-        return res.status(404).json({ error: "Movie not found" });
-      }
-
-      res
-        .status(200)
-        .json({ message: "Movie deleted successfully", deletedMovie });
-    });
   });
-
+  
 router.route("/movies/:id").get((req, res) => {
   const movieId = req.params.id;
   const { reviews } = req.query;
