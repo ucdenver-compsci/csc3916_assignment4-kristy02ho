@@ -253,7 +253,7 @@ router
       res.status(500).json({ error: "Failed to create review" });
     }
   });
-  
+
 router.route("/movies/:id").get((req, res) => {
   const movieId = req.params.id;
   const { reviews } = req.query;
